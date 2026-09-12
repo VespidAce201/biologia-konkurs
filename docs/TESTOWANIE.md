@@ -30,13 +30,13 @@ Aplikacja została przetestowana ręcznie w przeglądarce (Chromium) w trakcie b
 - **Statystyki**: agregacja postępu ogólnego i per dział, wykres nauki z ostatnich 7 dni, lista słabych/mocnych tematów, historia egzaminów — sprawdzone z rzeczywistymi danymi z sesji testowej.
 - **Osiągnięcia**: poziom/XP, cele dzienne/tygodniowe, siatka odznak z poprawnym odblokowywaniem (sprawdzone m.in. „Pierwszy krok”, „Pierwszy quiz”, „Pierwszy egzamin”).
 
-## PWA (instalacja na telefonie)
+## PWA i publikacja jako strona internetowa
 
 - Zweryfikowano: manifest (`manifest.webmanifest`) poprawnie się ładuje, wszystkie ikony (`assets/icons/*.png`, 5 rozmiarów) generują się poprawnie i wyglądają czytelnie.
 - Zweryfikowano: `index.html` poprawnie linkuje manifest, ikony i rejestruje `sw.js`; aplikacja działa normalnie także wtedy, gdy rejestracja service workera się nie powiedzie (błąd jest łapany i tylko logowany do konsoli, nic w UI się nie psuje).
-- Lokalny serwer (`uruchom-serwer.ps1`) przepisano na surowe gniazda TCP (zamiast `System.Net.HttpListener`) obsługiwane równolegle w puli wątków — dzięki temu nasłuchuje na wszystkich interfejsach sieciowych (dostęp z telefonu w tej samej sieci Wi-Fi) bez wymogu uprawnień administratora, oraz radzi sobie z dziesiątkami równoległych żądań przy starcie aplikacji.
-- **Nie udało się w pełni zweryfikować rejestracji service workera (`navigator.serviceWorker.register`) w środowisku testowym** — żądanie o plik `sw.js` w ogóle nie pojawia się w rejestrze żądań sieciowych narzędzia testowego (mimo że zwykłe `fetch()` do tego samego pliku, z tego samego serwera, działa bezbłędnie, a rejestracja service workera na zewnętrznej stronie HTTPS poprawnie generuje ruch sieciowy). To wskazuje na ograniczenie samej piaskownicy przeglądarki testowej w obsłudze żądań inicjowanych przez proces przeglądarki (a nie przez stronę), a nie na błąd w kodzie aplikacji czy serwera. **Zalecana weryfikacja w prawdziwej przeglądarce** (Chrome na Androidzie / Safari na iOS) przy pierwszej instalacji na telefonie.
-- Dostęp przez adres sieci lokalnej (LAN IP) z tego samego komputera do samego siebie zweryfikowano jako działający po naprawie serwera; dostęp z **oddzielnego** urządzenia (prawdziwego telefonu) nie został przetestowany fizycznie i może wymagać jednorazowego dodania reguły w Zaporze Windows — patrz README.
+- Aplikacja opublikowana na GitHub Pages pod `https://vespidace201.github.io/biologia-konkurs/` — **zweryfikowano na żywo**: strona ładuje się poprawnie (wszystkie 208 zasobów statycznych zwraca 200, licznik treści zgadza się z lokalną wersją: 391 fiszek, pełna nawigacja hash-routingu), instalacja i test wykonany bezpośrednio na prawdziwym telefonie użytkownika (nie tylko w sandboxie) potwierdziły poprawne działanie, w tym poprawkę wyśrodkowania ikony menu mobilnego w Safari na iOS.
+- Lokalny serwer (`uruchom-serwer.ps1`) do trybu offline-only nadal nasłuchuje na wszystkich interfejsach sieciowych (surowe gniazda TCP, bez wymogu uprawnień administratora) — pozostaje jako alternatywa dla osób chcących używać aplikacji bez żadnego dostępu do internetu.
+- Wcześniejszy eksperyment z automatyczną synchronizacją postępu między urządzeniami przez lokalny serwer (`/api/state`) został **wycofany** na prośbę użytkownika po przejściu na model „strona internetowa" — każde urządzenie/przeglądarka trzyma teraz swój postęp niezależnie w `localStorage`, zgodnie z wybraną opcją „prosta strona statyczna, bez synchronizacji".
 
 ## Znane ograniczenia testowania
 

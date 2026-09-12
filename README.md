@@ -1,24 +1,32 @@
 # BioKonkurs
 
-Kompleksowa, w pełni **lokalna i offline'owa** aplikacja do przygotowania ucznia szkoły podstawowej do **I etapu (szkolnego) konkursu kuratoryjnego z biologii**.
+Kompleksowa aplikacja do przygotowania ucznia szkoły podstawowej do **I etapu (szkolnego) konkursu kuratoryjnego z biologii**.
+
+## 🌐 Strona na żywo
+
+**https://vespidace201.github.io/biologia-konkurs/**
+
+Otwórz ten link w dowolnej przeglądarce (komputer, telefon, tablet) — działa od razu, bez instalacji. Na telefonie możesz dodatkowo dodać go do ekranu głównego (menu przeglądarki → „Zainstaluj aplikację" / „Dodaj do ekranu początkowego"), żeby otwierał się jak zwykła aplikacja, w pełnym ekranie.
 
 Zakres merytoryczny: **Dział I — Organizacja i chemizm życia** oraz **Dział II — Różnorodność życia** (klasyfikacja organizmów, wirusy, bakterie, rośliny, grzyby, zwierzęta bezkręgowe i kręgowe), zgodnie z podstawą programową biologii dla szkoły podstawowej.
 
 ## Najważniejsze zasady projektu
 
 - **Zero AI / zero API.** Aplikacja nie łączy się z żadnym zewnętrznym serwisem, nie wymaga kluczy API i nie generuje treści przez model językowy. Wszystkie lekcje, pytania, fiszki, wyjaśnienia i diagramy są przygotowane wcześniej i przechowywane lokalnie w kodzie źródłowym.
-- **Zero instalacji.** Aplikacja to czysty HTML/CSS/JavaScript — **bez** Node.js, npm, bundlera, frameworka czy jakiegokolwiek kroku budowania. Działa przez zwykłe otwarcie pliku w przeglądarce.
-- **Offline.** Po otwarciu aplikacja nie wykonuje żadnych zapytań sieciowych. Postęp ucznia zapisywany jest lokalnie w przeglądarce (`localStorage`).
+- **Zero instalacji.** Aplikacja to czysty HTML/CSS/JavaScript — **bez** Node.js, npm, bundlera, frameworka czy jakiegokolwiek kroku budowania.
+- **Postęp lokalnie w przeglądarce.** Ukończone lekcje, wyniki quizów, fiszki, XP itd. zapisywane są w `localStorage` przeglądarki, na urządzeniu, z którego korzystasz — bez konta, bez chmury. Każda przeglądarka/urządzenie ma swój osobny postęp.
 
 ## Jak uruchomić aplikację
 
-### Sposób 1 — najprostszy (zalecany)
+### Sposób 1 — strona internetowa (zalecane)
 
-Otwórz plik [`index.html`](index.html) bezpośrednio w przeglądarce (Chrome, Edge lub Firefox) — dwuklik w Eksploratorze Windows, albo przeciągnij plik na okno przeglądarki.
+Wejdź na **https://vespidace201.github.io/biologia-konkurs/** — to wszystko, działa na każdym urządzeniu z przeglądarką.
 
-### Sposób 2 — przez lokalny serwer (jeśli przeglądarka blokuje skrypty przy otwieraniu pliku)
+### Sposób 2 — lokalnie, bez internetu
 
-Niektóre przeglądarki bywają bardziej restrykcyjne wobec plików otwieranych z dysku (`file://`). Jeśli aplikacja nie działa poprawnie po dwukliku, uruchom dołączony, w pełni lokalny serwer (nie wymaga Node.js ani Pythona — korzysta wyłącznie z wbudowanego w Windows PowerShell):
+Jeśli wolisz mieć aplikację całkowicie offline (bez żadnego dostępu do sieci), można ją też uruchomić lokalnie z tego samego kodu:
+
+Otwórz plik [`index.html`](index.html) bezpośrednio w przeglądarce (Chrome, Edge lub Firefox) — dwuklik w Eksploratorze Windows, albo przeciągnij plik na okno przeglądarki. Jeśli przeglądarka blokuje skrypty przy otwieraniu pliku z dysku, uruchom dołączony, w pełni lokalny serwer (nie wymaga Node.js ani Pythona — korzysta wyłącznie z wbudowanego w Windows PowerShell):
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File uruchom-serwer.ps1
@@ -30,38 +38,16 @@ Serwer wystartuje pod adresem `http://localhost:8877` i automatycznie otworzy pr
 
 Aplikację można zainstalować na telefonie jako samodzielną „appkę" — z ikoną na ekranie głównym i uruchamianiem w pełnym ekranie, bez paska adresu przeglądarki. To tzw. **PWA (Progressive Web App)** — nie ma jej w Google Play/App Store, ale instaluje się i działa jak zwykła aplikacja.
 
-### Krok 1 — uruchom serwer na komputerze
-
-```bash
-powershell -ExecutionPolicy Bypass -File "C:\Users\szef\Documents\biologia-konkurs\uruchom-serwer.ps1"
-```
-
-W oknie PowerShell pojawi się adres w stylu:
-
-```
-Dla telefonu (ta sama siec Wi-Fi): http://192.168.100.164:8877/
-```
-
-### Krok 2 — zezwól na ten adres w Zaporze Windows (jednorazowo)
-
-Domyślnie Zapora systemu Windows blokuje połączenia przychodzące z sieci do programów, które nie mają jawnego zezwolenia. Żeby telefon mógł się połączyć, otwórz **PowerShell jako Administrator** na komputerze i wykonaj jednorazowo:
-
-```powershell
-New-NetFirewallRule -DisplayName "BioKonkurs" -Direction Inbound -Protocol TCP -LocalPort 8877 -Action Allow
-```
-
-(Tę regułę można też dodać ręcznie w Zaporze Windows: Panel sterowania → Zapora systemu Windows → Ustawienia zaawansowane → Reguły przychodzące → Nowa reguła → Port → TCP 8877 → Zezwól). To jedyny krok, który trzeba wykonać z uprawnieniami administratora — celowo tego nie robię automatycznie, bo to zmiana ustawień zabezpieczeń systemu.
-
-### Krok 3 — otwórz adres na telefonie i zainstaluj
-
-Upewnij się, że telefon jest podłączony do **tej samej sieci Wi-Fi** co komputer. W przeglądarce na telefonie (Chrome na Androidzie, Safari na iPhonie) otwórz adres wypisany w kroku 1 (np. `http://192.168.100.164:8877/`).
+**Najprościej:** na telefonie wejdź na **https://vespidace201.github.io/biologia-konkurs/**, a potem:
 
 - **Android (Chrome)**: dotknij menu (⋮) → **„Zainstaluj aplikację"** albo **„Dodaj do ekranu głównego"**.
 - **iPhone (Safari)**: dotknij ikonę udostępniania (□↑) → **„Dodaj do ekranu początkowego"**.
 
-Na ekranie głównym telefonu pojawi się ikona BioKonkurs — uruchamia aplikację w pełnym ekranie, bez paska przeglądarki.
+Ponieważ to prawdziwa strona internetowa, działa to z dowolnego miejsca (nie tylko w domowym Wi-Fi) i nie wymaga włączonego komputera. Aplikacja zawiera też mechanizm (service worker) buforujący treść po pierwszym wczytaniu, dzięki czemu nauka, quizy i zapisywanie postępu działają dalej nawet bez internetu — internet jest potrzebny tylko za pierwszym razem, żeby ją wczytać.
 
-**Uwaga o trybie offline:** aplikacja zawiera mechanizm (service worker), który po pierwszym wczytaniu buforuje całą treść, żeby działać offline nawet bez uruchomionego serwera na komputerze. Jego rejestracja zależy od przeglądarki telefonu — jeśli po pierwszym otwarciu aplikacja nie działa bez Wi-Fi, wystarczy trzymać serwer na komputerze uruchomiony w tej samej sieci przy każdym użyciu na telefonie; sama nauka, quizy i postęp i tak zawsze działają lokalnie bez internetu, tylko wymagają wtedy, żeby telefon i komputer były w tej samej sieci.
+### Alternatywa: instalacja z wersji lokalnej (bez internetu w ogóle)
+
+Jeśli wolisz korzystać z lokalnie uruchomionej wersji (Sposób 2 wyżej) zamiast strony internetowej, telefon i komputer muszą być w tej samej sieci — albo w tym samym Wi-Fi, albo połączone przez prywatny VPN (np. [Tailscale](https://tailscale.com)), jeśli chcesz mieć do niej dostęp spoza domu. W takim wypadku instalujesz PWA z adresu, pod którym działa lokalny serwer (np. `http://192.168.x.x:8877/` albo adres Tailscale), a nie z adresu powyżej.
 
 ## "Budowanie wersji produkcyjnej"
 

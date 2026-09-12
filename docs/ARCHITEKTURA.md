@@ -91,6 +91,12 @@ Każda strona to funkcja `render(root, params, query)`, którą router wywołuje
 
 Ten sam wzorzec (dane → logika → UI → zapis → gamifikacja) powtarza się we wszystkich trybach nauki.
 
+## Publikacja jako strona internetowa
+
+Ponieważ aplikacja to czyste pliki statyczne, można ją opublikować na dowolnym hostingu stron statycznych bez żadnych zmian w kodzie. Aktualnie działa na **GitHub Pages** (`https://vespidace201.github.io/biologia-konkurs/`), wdrożonej z gałęzi `main` repozytorium `VespidAce201/biologia-konkurs`. Plik `.nojekyll` wyłącza domyślne przetwarzanie Jekyll (niepotrzebne dla czystego HTML/CSS/JS i mogące zakłócać nietypowe nazwy plików/folderów). Ponieważ każdy plik jest linkowany ścieżką względną, wdrożenie działa identycznie spod dowolnego podfolderu (np. `/biologia-konkurs/`), bez twardo zakodowanego adresu bazowego.
+
+Postęp ucznia (localStorage) jest wtedy przypisany do przeglądarki/urządzenia odwiedzającego stronę — każde urządzenie ma osobny postęp (świadomy wybór: prostota i brak zależności od zewnętrznego backendu ważniejsze niż automatyczna synchronizacja między urządzeniami).
+
 ## Warstwa PWA (instalacja na telefonie)
 
 - `manifest.webmanifest` — nazwa, ikony, kolor motywu, `display: standalone` (uruchamianie bez paska przeglądarki).
