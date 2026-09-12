@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+<title>BioKonkurs — Przygotowanie do konkursu z biologii</title>
+
+<!-- PWA: instalacja jako aplikacja na telefonie/komputerze -->
+<link rel="manifest" href="manifest.webmanifest" />
+<meta name="theme-color" content="#1f8a5f" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="BioKonkurs" />
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png" />
+
+<link rel="stylesheet" href="assets/css/theme.css" />
+<link rel="stylesheet" href="assets/css/base.css" />
+<link rel="stylesheet" href="assets/css/components.css" />
+</head>
+<body>
+<div id="app-root"></div>
+
+<!-- Rdzeń -->
+<script src="src/core/namespace.js"></script>
+<script src="src/core/utils.js"></script>
+<script src="src/core/events.js"></script>
+<script src="src/core/router.js"></script>
+
+<!-- Baza danych lokalnych (localStorage) -->
+<script src="src/db/storage.js"></script>
+<script src="src/db/progressRepo.js"></script>
+<script src="src/db/srsRepo.js"></script>
+<script src="src/db/resultsRepo.js"></script>
+<script src="src/db/gamificationRepo.js"></script>
+<script src="src/db/settingsRepo.js"></script>
+
+<!-- Warstwa treści: kontrakt danych -->
+<script src="src/content/types.js"></script>
+<script src="src/content/registry.js"></script>
+<script src="src/content/queries.js"></script>
+<script src="src/content/diagramy/svgKit.js"></script>
+
+<!-- Silniki (logika biznesowa) -->
+<script src="src/modules/scoringEngine.js"></script>
+<script src="src/modules/recommendationEngine.js"></script>
+<script src="src/modules/gamificationEngine.js"></script>
+<script src="src/modules/statsEngine.js"></script>
+<script src="src/modules/examEngine.js"></script>
+
+<!-- Komponenty UI -->
+<script src="src/components/ui/icons.js"></script>
+<script src="src/components/ui/ui.js"></script>
+<script src="src/components/layout/header.js"></script>
+<script src="src/components/diagrams/chart.js"></script>
+<script src="src/components/diagrams/dataTable.js"></script>
+<script src="src/components/quiz/questionRenderer.js"></script>
+
+<!-- Struktura treści: działy i tematy -->
+<script src="src/content/struktura/dzialy.js"></script>
+<script src="src/content/struktura/tematy.js"></script>
+
+<!-- Treść: Dział I — Organizacja i chemizm życia -->
+<script src="src/content/dzial1/t101/diagramy.js"></script>
+<script src="src/content/dzial1/t101/lekcje.js"></script>
+<script src="src/content/dzial1/t101/pytania.js"></script>
+<script src="src/content/dzial1/t101/fiszki.js"></script>
+<script src="src/content/dzial1/t102/diagramy.js"></script>
+<script src="src/content/dzial1/t102/lekcje.js"></script>
+<script src="src/content/dzial1/t102/pytania.js"></script>
+<script src="src/content/dzial1/t102/fiszki.js"></script>
+<script src="src/content/dzial1/t103/diagramy.js"></script>
+<script src="src/content/dzial1/t103/lekcje.js"></script>
+<script src="src/content/dzial1/t103/pytania.js"></script>
+<script src="src/content/dzial1/t103/fiszki.js"></script>
+<script src="src/content/dzial1/t104/diagramy.js"></script>
+<script src="src/content/dzial1/t104/lekcje.js"></script>
+<script src="src/content/dzial1/t104/pytania.js"></script>
+<script src="src/content/dzial1/t104/fiszki.js"></script>
+<script src="src/content/dzial1/t105/diagramy.js"></script>
+<script src="src/content/dzial1/t105/lekcje.js"></script>
+<script src="src/content/dzial1/t105/pytania.js"></script>
+<script src="src/content/dzial1/t105/fiszki.js"></script>
+<script src="src/content/dzial1/t106/diagramy.js"></script>
+<script src="src/content/dzial1/t106/lekcje.js"></script>
+<script src="src/content/dzial1/t106/pytania.js"></script>
+<script src="src/content/dzial1/t106/fiszki.js"></script>
+<script src="src/content/dzial1/t107/diagramy.js"></script>
+<script src="src/content/dzial1/t107/lekcje.js"></script>
+<script src="src/content/dzial1/t107/pytania.js"></script>
+<script src="src/content/dzial1/t107/fiszki.js"></script>
+<script src="src/content/dzial1/t108/diagramy.js"></script>
+<script src="src/content/dzial1/t108/lekcje.js"></script>
+<script src="src/content/dzial1/t108/pytania.js"></script>
+<script src="src/content/dzial1/t108/fiszki.js"></script>
+<script src="src/content/dzial1/t109/diagramy.js"></script>
+<script src="src/content/dzial1/t109/lekcje.js"></script>
+<script src="src/content/dzial1/t109/pytania.js"></script>
+<script src="src/content/dzial1/t109/fiszki.js"></script>
+<script src="src/content/dzial1/t110/diagramy.js"></script>
+<script src="src/content/dzial1/t110/lekcje.js"></script>
+<script src="src/content/dzial1/t110/pytania.js"></script>
+<script src="src/content/dzial1/t110/fiszki.js"></script>
+<script src="src/content/dzial1/t111/diagramy.js"></script>
+<script src="src/content/dzial1/t111/lekcje.js"></script>
+<script src="src/content/dzial1/t111/pytania.js"></script>
+<script src="src/content/dzial1/t111/fiszki.js"></script>
+<script src="src/content/dzial1/t112/diagramy.js"></script>
+<script src="src/content/dzial1/t112/lekcje.js"></script>
+<script src="src/content/dzial1/t112/pytania.js"></script>
+<script src="src/content/dzial1/t112/fiszki.js"></script>
+<script src="src/content/dzial1/t113/diagramy.js"></script>
+<script src="src/content/dzial1/t113/lekcje.js"></script>
+<script src="src/content/dzial1/t113/pytania.js"></script>
+<script src="src/content/dzial1/t113/fiszki.js"></script>
+<script src="src/content/dzial1/t114/diagramy.js"></script>
+<script src="src/content/dzial1/t114/lekcje.js"></script>
+<script src="src/content/dzial1/t114/pytania.js"></script>
+<script src="src/content/dzial1/t114/fiszki.js"></script>
+<script src="src/content/dzial1/t115/diagramy.js"></script>
+<script src="src/content/dzial1/t115/lekcje.js"></script>
+<script src="src/content/dzial1/t115/pytania.js"></script>
+<script src="src/content/dzial1/t115/fiszki.js"></script>
+<script src="src/content/dzial1/t116/diagramy.js"></script>
+<script src="src/content/dzial1/t116/lekcje.js"></script>
+<script src="src/content/dzial1/t116/pytania.js"></script>
+<script src="src/content/dzial1/t116/fiszki.js"></script>
+<script src="src/content/dzial1/t117/diagramy.js"></script>
+<script src="src/content/dzial1/t117/lekcje.js"></script>
+<script src="src/content/dzial1/t117/pytania.js"></script>
+<script src="src/content/dzial1/t117/fiszki.js"></script>
+
+<!-- Treść: Dział II — Różnorodność życia -->
+<script src="src/content/dzial2/t201/diagramy.js"></script>
+<script src="src/content/dzial2/t201/lekcje.js"></script>
+<script src="src/content/dzial2/t201/pytania.js"></script>
+<script src="src/content/dzial2/t201/fiszki.js"></script>
+<script src="src/content/dzial2/t202/diagramy.js"></script>
+<script src="src/content/dzial2/t202/lekcje.js"></script>
+<script src="src/content/dzial2/t202/pytania.js"></script>
+<script src="src/content/dzial2/t202/fiszki.js"></script>
+<script src="src/content/dzial2/t203/diagramy.js"></script>
+<script src="src/content/dzial2/t203/lekcje.js"></script>
+<script src="src/content/dzial2/t203/pytania.js"></script>
+<script src="src/content/dzial2/t203/fiszki.js"></script>
+<script src="src/content/dzial2/t204-tkanki/diagramy.js"></script>
+<script src="src/content/dzial2/t204-tkanki/lekcje.js"></script>
+<script src="src/content/dzial2/t204-tkanki/pytania.js"></script>
+<script src="src/content/dzial2/t204-tkanki/fiszki.js"></script>
+<script src="src/content/dzial2/t204-mchy/diagramy.js"></script>
+<script src="src/content/dzial2/t204-mchy/lekcje.js"></script>
+<script src="src/content/dzial2/t204-mchy/pytania.js"></script>
+<script src="src/content/dzial2/t204-mchy/fiszki.js"></script>
+<script src="src/content/dzial2/t204-paprociowe/diagramy.js"></script>
+<script src="src/content/dzial2/t204-paprociowe/lekcje.js"></script>
+<script src="src/content/dzial2/t204-paprociowe/pytania.js"></script>
+<script src="src/content/dzial2/t204-paprociowe/fiszki.js"></script>
+<script src="src/content/dzial2/t204-nagonasienne/diagramy.js"></script>
+<script src="src/content/dzial2/t204-nagonasienne/lekcje.js"></script>
+<script src="src/content/dzial2/t204-nagonasienne/pytania.js"></script>
+<script src="src/content/dzial2/t204-nagonasienne/fiszki.js"></script>
+<script src="src/content/dzial2/t204-okrytonasienne/diagramy.js"></script>
+<script src="src/content/dzial2/t204-okrytonasienne/lekcje.js"></script>
+<script src="src/content/dzial2/t204-okrytonasienne/pytania.js"></script>
+<script src="src/content/dzial2/t204-okrytonasienne/fiszki.js"></script>
+<script src="src/content/dzial2/t205/diagramy.js"></script>
+<script src="src/content/dzial2/t205/lekcje.js"></script>
+<script src="src/content/dzial2/t205/pytania.js"></script>
+<script src="src/content/dzial2/t205/fiszki.js"></script>
+<script src="src/content/dzial2/t206-tkanki/diagramy.js"></script>
+<script src="src/content/dzial2/t206-tkanki/lekcje.js"></script>
+<script src="src/content/dzial2/t206-tkanki/pytania.js"></script>
+<script src="src/content/dzial2/t206-tkanki/fiszki.js"></script>
+<script src="src/content/dzial2/t206-plazince/diagramy.js"></script>
+<script src="src/content/dzial2/t206-plazince/lekcje.js"></script>
+<script src="src/content/dzial2/t206-plazince/pytania.js"></script>
+<script src="src/content/dzial2/t206-plazince/fiszki.js"></script>
+<script src="src/content/dzial2/t206-nicienie/diagramy.js"></script>
+<script src="src/content/dzial2/t206-nicienie/lekcje.js"></script>
+<script src="src/content/dzial2/t206-nicienie/pytania.js"></script>
+<script src="src/content/dzial2/t206-nicienie/fiszki.js"></script>
+<script src="src/content/dzial2/t206-pierscienice/diagramy.js"></script>
+<script src="src/content/dzial2/t206-pierscienice/lekcje.js"></script>
+<script src="src/content/dzial2/t206-pierscienice/pytania.js"></script>
+<script src="src/content/dzial2/t206-pierscienice/fiszki.js"></script>
+<script src="src/content/dzial2/t206-stawonogi/diagramy.js"></script>
+<script src="src/content/dzial2/t206-stawonogi/lekcje.js"></script>
+<script src="src/content/dzial2/t206-stawonogi/pytania.js"></script>
+<script src="src/content/dzial2/t206-stawonogi/fiszki.js"></script>
+<script src="src/content/dzial2/t206-mieczaki/diagramy.js"></script>
+<script src="src/content/dzial2/t206-mieczaki/lekcje.js"></script>
+<script src="src/content/dzial2/t206-mieczaki/pytania.js"></script>
+<script src="src/content/dzial2/t206-mieczaki/fiszki.js"></script>
+<script src="src/content/dzial2/t206-ryby/diagramy.js"></script>
+<script src="src/content/dzial2/t206-ryby/lekcje.js"></script>
+<script src="src/content/dzial2/t206-ryby/pytania.js"></script>
+<script src="src/content/dzial2/t206-ryby/fiszki.js"></script>
+<script src="src/content/dzial2/t206-plazy/diagramy.js"></script>
+<script src="src/content/dzial2/t206-plazy/lekcje.js"></script>
+<script src="src/content/dzial2/t206-plazy/pytania.js"></script>
+<script src="src/content/dzial2/t206-plazy/fiszki.js"></script>
+<script src="src/content/dzial2/t206-gady/diagramy.js"></script>
+<script src="src/content/dzial2/t206-gady/lekcje.js"></script>
+<script src="src/content/dzial2/t206-gady/pytania.js"></script>
+<script src="src/content/dzial2/t206-gady/fiszki.js"></script>
+<script src="src/content/dzial2/t206-ptaki/diagramy.js"></script>
+<script src="src/content/dzial2/t206-ptaki/lekcje.js"></script>
+<script src="src/content/dzial2/t206-ptaki/pytania.js"></script>
+<script src="src/content/dzial2/t206-ptaki/fiszki.js"></script>
+<script src="src/content/dzial2/t206-ssaki/diagramy.js"></script>
+<script src="src/content/dzial2/t206-ssaki/lekcje.js"></script>
+<script src="src/content/dzial2/t206-ssaki/pytania.js"></script>
+<script src="src/content/dzial2/t206-ssaki/fiszki.js"></script>
+
+<!-- Moduły ćwiczeniowe -->
+<script src="src/content/moduly/doswiadczenia.js"></script>
+<script src="src/content/moduly/doswiadczenia-2.js"></script>
+<script src="src/content/moduly/analiza-danych.js"></script>
+<script src="src/content/moduly/analiza-danych-2.js"></script>
+<script src="src/content/moduly/budowa-funkcja.js"></script>
+<script src="src/content/moduly/budowa-funkcja-2.js"></script>
+
+<!-- Egzaminy -->
+<script src="src/content/egzaminy/probne.js"></script>
+<script src="src/content/egzaminy/symulacja-konkursu.js"></script>
+
+<!-- Strony -->
+<script src="src/pages/dashboard.js"></script>
+<script src="src/pages/dzialy.js"></script>
+<script src="src/pages/temat.js"></script>
+<script src="src/pages/lekcja.js"></script>
+<script src="src/pages/fiszki.js"></script>
+<script src="src/pages/quiz.js"></script>
+<script src="src/pages/doswiadczenia.js"></script>
+<script src="src/pages/analizaDanych.js"></script>
+<script src="src/pages/budowaFunkcja.js"></script>
+<script src="src/pages/egzamin.js"></script>
+<script src="src/pages/statystyki.js"></script>
+<script src="src/pages/osiagniecia.js"></script>
+
+<!-- Bootstrap -->
+<script src="src/app.js"></script>
+
+<!-- PWA: rejestracja service workera (offline + instalacja). Wymaga kontekstu bezpiecznego
+     (http://localhost lub https) — pod zwykłym file:// przeglądarki nie pozwalają na Service Workery,
+     więc aplikacja wtedy po prostu działa normalnie, tylko bez trybu "zainstaluj jako aplikację". -->
+<script>
+  if ('serviceWorker' in navigator && (location.protocol === 'http:' || location.protocol === 'https:')) {
+    window.addEventListener('load', function () {
+      function tryRegister(attemptsLeft) {
+        navigator.serviceWorker.register('./sw.js').catch(function (err) {
+          if (attemptsLeft > 0) {
+            setTimeout(function () { tryRegister(attemptsLeft - 1); }, 1200);
+          } else {
+            console.warn('[PWA] Rejestracja service workera nie powiodła się:', err);
+          }
+        });
+      }
+      setTimeout(function () { tryRegister(4); }, 800);
+    });
+  }
+</script>
+</body>
+</html>

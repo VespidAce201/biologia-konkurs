@@ -1,0 +1,108 @@
+:root {
+  --color-bg: #f5f7f6;
+  --color-bg-elevated: #ffffff;
+  --color-bg-sunken: #eef1f0;
+  --color-border: #dde3e1;
+  --color-text: #1a2420;
+  --color-text-muted: #5b6a64;
+  --color-text-faint: #8a9b93;
+
+  --color-primary: #1f8a5f;
+  --color-primary-hover: #17714c;
+  --color-primary-bg: #e4f5ec;
+  --color-secondary: #2a6f97;
+  --color-secondary-bg: #e5f0f7;
+  --color-accent: #b8860b;
+  --color-accent-bg: #fbf1dc;
+
+  --color-success: #1f8a5f;
+  --color-success-bg: #e4f5ec;
+  --color-danger: #c0392b;
+  --color-danger-bg: #fbe8e6;
+  --color-warning: #b8860b;
+  --color-warning-bg: #fbf1dc;
+  --color-info: #2a6f97;
+  --color-info-bg: #e5f0f7;
+
+  --shadow-sm: 0 1px 2px rgba(20, 30, 25, 0.06);
+  --shadow-md: 0 4px 12px rgba(20, 30, 25, 0.08);
+  --shadow-lg: 0 12px 32px rgba(20, 30, 25, 0.14);
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+
+  --font-sans: 'Segoe UI', system-ui, -apple-system, 'Noto Sans', sans-serif;
+
+  --dzial-1: #1f8a5f;
+  --dzial-2-klasyfikacja: #2a6f97;
+  --dzial-2-wirusy: #8a4fbf;
+  --dzial-2-bakterie: #c0392b;
+  --dzial-2-rosliny: #4a9c2f;
+  --dzial-2-grzyby: #b8860b;
+  --dzial-2-zwierzeta: #d9622b;
+}
+
+:root[data-theme='dark'] {
+  --color-bg: #101613;
+  --color-bg-elevated: #1a2420;
+  --color-bg-sunken: #141d19;
+  --color-border: #2a3a34;
+  --color-text: #e9f2ee;
+  --color-text-muted: #a9bdb4;
+  --color-text-faint: #6f8379;
+
+  --color-primary: #3fd48a;
+  --color-primary-hover: #2fb877;
+  --color-primary-bg: #163828;
+  --color-secondary: #5fb0e0;
+  --color-secondary-bg: #123244;
+  --color-accent: #e0b44c;
+  --color-accent-bg: #3a2f10;
+
+  --color-success: #3fd48a;
+  --color-success-bg: #163828;
+  --color-danger: #e5675a;
+  --color-danger-bg: #3a1a17;
+  --color-warning: #e0b44c;
+  --color-warning-bg: #3a2f10;
+  --color-info: #5fb0e0;
+  --color-info-bg: #123244;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --color-bg: #101613;
+    --color-bg-elevated: #1a2420;
+    --color-bg-sunken: #141d19;
+    --color-border: #2a3a34;
+    --color-text: #e9f2ee;
+    --color-text-muted: #a9bdb4;
+    --color-text-faint: #6f8379;
+
+    --color-primary: #3fd48a;
+    --color-primary-hover: #2fb877;
+    --color-primary-bg: #163828;
+    --color-secondary: #5fb0e0;
+    --color-secondary-bg: #123244;
+    --color-accent: #e0b44c;
+    --color-accent-bg: #3a2f10;
+
+    --color-success: #3fd48a;
+    --color-success-bg: #163828;
+    --color-danger: #e5675a;
+    --color-danger-bg: #3a1a17;
+    --color-warning: #e0b44c;
+    --color-warning-bg: #3a2f10;
+    --color-info: #5fb0e0;
+    --color-info-bg: #123244;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+  }
+}
